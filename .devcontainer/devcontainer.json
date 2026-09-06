@@ -1,0 +1,65 @@
+{
+  "name": "React Stack CLI",
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:22",
+
+  // Features to add to the dev container
+  "features": {
+    "ghcr.io/devcontainers/features/git:1": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+
+  // Forward Vite dev server port
+  "forwardPorts": [5173],
+  "portsAttributes": {
+    "5173": {
+      "label": "Vite Dev Server",
+      "onAutoForward": "openBrowserOnce"
+    }
+  },
+
+  // Run npm install after container is created
+  "postCreateCommand": "bash .devcontainer/post-create.sh",
+
+  // VS Code / Cursor customizations
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.codeActionsOnSave": {
+          "source.fixAll.eslint": "explicit"
+        },
+        "typescript.tsdk": "node_modules/typescript/lib",
+        "typescript.enablePromptUseWorkspaceTsdk": true,
+        "tailwindCSS.experimental.configFile": null,
+        "files.eol": "\n"
+      },
+      "extensions": [
+        // Core
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+
+        // React & TypeScript
+        "dsznajder.es7-react-js-snippets",
+        "burkeholland.simple-react-snippets",
+
+        // Tailwind CSS
+        "bradlc.vscode-tailwindcss",
+
+        // Utilities
+        "christian-kohler.path-intellisense",
+        "formulahendry.auto-rename-tag",
+        "naumovs.color-highlight",
+        "streetsidesoftware.code-spell-checker",
+
+        // Git
+        "eamodio.gitlens",
+        "mhutchie.git-graph"
+      ]
+    }
+  },
+
+  // Container user
+  "remoteUser": "node"
+}
